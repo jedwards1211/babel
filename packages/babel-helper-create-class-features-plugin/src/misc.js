@@ -30,6 +30,7 @@ const classFieldDefinitionEvaluationTDZVisitor = traverse.visitors.merge([
   {
     ReferencedIdentifier(path) {
       if (
+        path.node.type !== "GenericTypeAnnotation" &&
         this.classBinding &&
         this.classBinding === path.scope.getBinding(path.node.name)
       ) {
